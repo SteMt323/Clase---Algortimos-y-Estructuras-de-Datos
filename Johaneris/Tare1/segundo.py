@@ -10,11 +10,14 @@ saldo y mostrar los resultados. Si se elige la opción de retiro, debe verificar
 suficiente.'''
 
 SaldoActual = 0.0
+Nombre = ""
 
 
-Cuenta_Bancaria =[SaldoActual]
+Cuenta_Bancaria =[Nombre, SaldoActual]
 
 
+
+# el problema al usar el insert en este codigo es el siguiente, que estoy insertando valores en lugar de actualiarlo, lo que puedo hacer es pasarle ese valor a la variable
 
 def Depositar():
 
@@ -25,26 +28,30 @@ def Depositar():
         nombreUsuario = input("Ingrese su nombre: ")
         if not  nombreUsuario.isalpha():
             print("solo puede ingresar letras")
+            Cuenta_Bancaria.insert(0, nombreUsuario)
         else:
             break
 
-        Cuenta_Bancaria.insert(0, nombreUsuario)
+        
 
     while True: 
         try:
             saldoNuevo = float(input("Ingrese la catidad que desea depositar: "))
             
             SaldoActual += saldoNuevo
+            Cuenta_Bancaria.insert(1,saldoNuevo)
+            #
             break
         except ValueError: print("Solo numeros son admitidos: ")
 
     # NuevoSaldo = [nombreUsuario, SaldoActual]
-    Cuenta_Bancaria.insert(1,saldoNuevo)
+    
 
 
 def Consultar_Dinero():
-    for i, saldo in enumerate(Cuenta_Bancaria):
-        print(f"su saldo es: {Cuenta_Bancaria[i][0]} ")
+    while True:
+        print(f"su saldo es: {Cuenta_Bancaria[1]} ")
+        break
 
 
 
