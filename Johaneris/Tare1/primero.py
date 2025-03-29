@@ -163,16 +163,13 @@ def consultar_Producto():
     '''El operador * en Python desempaqueta una lista, es decir, separa sus elementos y los pasa individualmente a la función print()
     El operador * convierte [4, 5, 6] en print(4, 5, 6).'''
     Limpiar()
-    if not Inventario: 
-        print("No hay inventario disponible")
-        return False
     Consultar_Productito = int(input("Ingrese el codigo del producto que desea cosultar: "))
     for indice, Codigo_Consultar in enumerate(Inventario):
         if Codigo_Consultar[1] == Consultar_Productito:
             print(*Inventario[indice])
         else:
             print("no se encuentra el producto")
-        return True
+        
     os.system("pause")
     
 
