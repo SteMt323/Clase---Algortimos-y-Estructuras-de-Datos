@@ -79,10 +79,6 @@ def Retirar_Dinero():
         except ValueError:
             print("Solo numeros admitidos")
             
-            
-            
-    
-
     # NuevoSaldo = [nombreUsuario, SaldoActual]
 
 def menu_Principal():
@@ -104,10 +100,6 @@ def menu_Principal():
         elif opcion == 4:
             print("Saliento del sistema")
             break
-
-    
-
-
 
 def main():
     menu_Principal()
