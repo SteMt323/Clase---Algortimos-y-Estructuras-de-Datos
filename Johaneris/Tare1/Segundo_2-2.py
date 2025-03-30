@@ -26,43 +26,61 @@ def Depositar():
         if not  nombreUsuario.isalpha():
             print("solo puede ingresar letras")
             # AQUI ESTOY ACTIALIZANDO EL VALOR EN LA POSICIO 0 DE LA LISTA EN LUGAR DE INSERTARLO
+            
+        else: 
             Cuenta_Bancaria[0]= nombreUsuario
-        break
+            break
+        
     
     while True: 
         try:
             saldoNuevo = float(input("Ingrese la catidad que desea depositar: "))
             
-            SaldoDeposito = SaldoActual + saldoNuevo
+            # SaldoDeposito = SaldoActual + saldoNuevo
             # Cuenta_Bancaria.insert(1,saldoNuevo)
-            Cuenta_Bancaria[1] = SaldoDeposito
-            #
+            Saldo = Cuenta_Bancaria[1]
+            SALDOTOTAL = Saldo + saldoNuevo
+            Cuenta_Bancaria[1] = SALDOTOTAL
             break
         except ValueError: print("Solo numeros son admitidos: ")
     return
 
     # NuevoSaldo = [nombreUsuario, SaldoActual]
 
+
+
 def Consultar_Dinero():
     print(f"{Cuenta_Bancaria[0]} tu saldo actual es: {Cuenta_Bancaria[1]} ")
     os.system("pause")
     return
 
+
+
 def Retirar_Dinero():
     
     while True:
-        Retiro = float(input("Ingrese el salgo que desea retirar: "))  
-        if Cuenta_Bancaria[1] < Retiro:
-            print("Saldo insuficiente para realizar el retiro")
-        else:
-            while True: 
-                try:
+        try:
+            Retiro = float(input("Ingrese el salgo que desea retirar: "))  
+            if Cuenta_Bancaria[1] >= Retiro:
             
-                    SaldoDeRetiro -= Retiro
+                
+            
+                        SALDORETIRO = Cuenta_Bancaria[1]
+                        NuevoSaldo = SALDORETIRO - Retiro
+                        Cuenta_Bancaria[1] = NuevoSaldo
                     # Cuenta_Bancaria.insert(1,saldoNuevo)
-                    Cuenta_Bancaria[1] = SaldoDeRetiro
-                except ValueError: print("Solo numeros son admitidos: ")
+                        print("Retiro de manera exitosa")
+                    
+                
+                        break
+            else:
+                print("Saldo insuficiente para realizar el retiro")
                 break
+        except ValueError:
+            print("Solo numeros admitidos")
+            
+            
+            
     
 
     # NuevoSaldo = [nombreUsuario, SaldoActual]
