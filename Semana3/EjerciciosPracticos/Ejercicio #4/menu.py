@@ -35,7 +35,7 @@ def menu():
         elif opc == "3":
             # code
             cod = int(input("Ingrese el codigo del producto a modificar: "))
-            if inventario.buscar(cod):
+            if inventario.buscar_producto(cod):
                 nuevo_nombre = input("Ingrese el nuevo nombre del producto: ")
                 nuevo_precio = float(input("Ingrese el nuevo precio del producto: "))
                 nueva_cantidad = int(input("Ingrese la nueva cantidad del producto"))

@@ -1,15 +1,9 @@
 def int_evaluation(num):
-    if num == None:
+    if num is None:
         return True
-    elif num == int:
-        return True
-    else:
-        return False
+    return isinstance(num, int)
     
 def float_evaluation(num):
-    if num == None:
+    if num is None:
         return True
-    elif num == float:
-        return True
-    else:
-        return False
+    return isinstance(num, float)
