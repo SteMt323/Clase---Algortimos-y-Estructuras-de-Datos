@@ -1,16 +1,13 @@
-from cliente import Cliente, TipoCliente
-
+from cliente import Cliente, ClienteVip
+from producto import Producto
 class Pedido():
-    def __init__(self):
-        self.cliente = TipoCliente
-        self.productos = []
+    def __init__(self, cliente, productos: Producto):
+        self.cliente = cliente
+        self.productos = productos
         
-    def agregar_producto(self, producto):
-        self.productos.append(producto)
-        
-    def venta_total(self):
+    def calcular_venta_total(self):
         total = sum(producto.precio for producto in self.productos)
-        if self.cliente.tipo != "regular":
+        if self.cliente.tipo != None:
             descuento = self.cliente.descuento()
             total -= total * (descuento / 100)
             return total
@@ -22,7 +19,7 @@ class Pedido():
         print(f"Cliente: {self.cliente.nombre} - {self.cliente.contacto}")
         print("Productos comprados: ")
         for i in self.productos:
-            print(f"{i.nombre}: ${round(i.precio, 2)}")
+            print(f"Producto {i+1}: {i.producto}")
         print(f"Total: ${self.venta_total()}")
         
         
