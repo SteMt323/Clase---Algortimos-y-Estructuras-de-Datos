@@ -1,4 +1,3 @@
-from cliente import Cliente, ClienteVip
 class Pedido():
     def __init__(self, cliente, productos):
         self.cliente = cliente
@@ -16,7 +15,7 @@ class Pedido():
         print("Productos comprados: ")
         for i, producto in enumerate(self.productos, start=1):
             print(f"{1}: {producto["nombre"]} - ${producto["precio"]:.2f}")
-        print(f"Total: ${self.calcular_venta_total():.2f}")
+        print(f"Total: ${self.calcular_venta_total():.2f}\n")
         
         
     # Esta funcion debería de detallar datos del cliente, lista de productos

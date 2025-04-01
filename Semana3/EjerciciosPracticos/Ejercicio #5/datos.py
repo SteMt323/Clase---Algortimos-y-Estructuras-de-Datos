@@ -18,17 +18,17 @@ def detallar_cliente():
         
 def elegir_productos():
     # Esta es nuestra lista de productos, contiene una lista de diccionario "nombre" "precio"
-    list_products = [{
+    list_products = [
         {"nombre": "Pc de Escritorio", "precio": 2000.20},
         {"nombre": "Laptop", "precio": 1500.20},
         {"nombre": "Mouse", "precio": 50.20},
         {"nombre": "Teclado", "precio": 120.20}
-    }]
+    ]
     
     
     print("\nLista de productos: ")
     for i, producto in enumerate(list_products, start =1):
-        print(f"Producto {1}:  {producto["nombre"]} - ${producto["precio"]:.2}")
+        print(f"Producto {i}:  {producto["nombre"]} - ${round(producto["precio"],2)}")
     
     n = int(input("Seleccione cantidad de productos a elegir: "))
     
