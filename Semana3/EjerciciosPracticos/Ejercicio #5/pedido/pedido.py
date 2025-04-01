@@ -1,26 +1,22 @@
 from cliente import Cliente, ClienteVip
-from producto import Producto
 class Pedido():
-    def __init__(self, cliente, productos: Producto):
+    def __init__(self, cliente, productos):
         self.cliente = cliente
         self.productos = productos
         
     def calcular_venta_total(self):
-        total = sum(producto.precio for producto in self.productos)
-        if self.cliente.tipo != None:
-            descuento = self.cliente.descuento()
-            total -= total * (descuento / 100)
-            return total
-        else:
-            return total
+        total = sum(producto["precio"] for producto in self.productos)
+        descuento = self.cliente.calcular_descuento()
+        total -= total * descuento
+        return total
         
     def generar_pedido(self):
-        print("Pedido: ")
+        print("\n------- Pedido -------")
         print(f"Cliente: {self.cliente.nombre} - {self.cliente.contacto}")
         print("Productos comprados: ")
-        for i in self.productos:
-            print(f"Producto {i+1}: {i.producto}")
-        print(f"Total: ${self.venta_total()}")
+        for i, producto in enumerate(self.productos, start=1):
+            print(f"{1}: {producto["nombre"]} - ${producto["precio"]:.2f}")
+        print(f"Total: ${self.calcular_venta_total():.2f}")
         
         
     # Esta funcion debería de detallar datos del cliente, lista de productos

@@ -1,58 +1,43 @@
 from pedido.cliente import ClienteVip, Cliente
-from pedido.producto import Producto
 import random
 
 def detallar_cliente():
     cliente_detalle = None
     n = input("Seleccione el tipo de cliente: \n1. Regular \n2. Vip\n")
+    id = random.randint(1000, 9999) 
+    nombre = input("Ingrese el nombre: ")
+    contacto = input("Ingrese el contacto del cliente (num - cel): ")
     if n == "1":
-        cliente = Cliente()
-        id = random.randint(1000, 9999) 
-        nombre = input("Ingrese el nombre: ")
-        contacto = input("Ingrese el contacto del cliente (num - cel): ")
-        cliente_detalle = cliente.agregar_cliente(id, nombre, contacto)
+        cliente_detalle = Cliente(id, nombre, contacto)
         
     elif n == "2":
-        cliente = ClienteVip()
-        id = random.randint(1000, 9999)
-        nombre = input("Ingrese el nombre: ")
-        contacto = input("Ingrese el contacto del cliente (num - cel): ")
-        tipo = True
-        cliente_detalle = cliente.agregar_cliente(id, nombre, contacto, tipo)
+        cliente_detalle = ClienteVip(id, nombre, contacto)
         
     return cliente_detalle
         
         
 def elegir_productos():
+    # Esta es nuestra lista de productos, contiene una lista de diccionario "nombre" "precio"
     list_products = [{
-        "Pc de Escritorio": 2000.20,
-        "Laptop": 1500.20,
-        "Mouse": 50.20,
-        "Teclado": 120.20
+        {"nombre": "Pc de Escritorio", "precio": 2000.20},
+        {"nombre": "Laptop", "precio": 1500.20},
+        {"nombre": "Mouse", "precio": 50.20},
+        {"nombre": "Teclado", "precio": 120.20}
     }]
     
     
-    print("Lista de productos")
-    for i in list_products:
-        print(f"Producto {i + 1}:  {list_products[i]}")
+    print("\nLista de productos: ")
+    for i, producto in enumerate(list_products, start =1):
+        print(f"Producto {1}:  {producto["nombre"]} - ${producto["precio"]:.2}")
     
-    n = input("Seleccione cantidad de productos a elegir: ")
-    p = Producto()
-    selected_products = []
-    for i in range(n):
-        election = input("Seleccione el producto: ")
-        if election == "1":
-            producto = list_products[0]
-            selected_products.append(p.agregar_producto(producto))
-        elif election == "2":
-            producto = list_products[1]
-            selected_products.append(p.agregar_producto(producto))
-        elif election == "3":
-            producto = list_products[2]
-            selected_products.append(p.agregar_producto(producto))
-        elif election == "4":
-            producto = list_products[3]
-            selected_products.append(p.agregar_producto(producto))
+    n = int(input("Seleccione cantidad de productos a elegir: "))
+    
+    selected_products = [] # Y aqui para poder agregar a una nueva lista los productos elegidos
+    
+    for _ in range(n):
+        election = int(input("Seleccione el producto: "))
+        if 0 <= election < len(list_products):
+            selected_products.append(list_products[election])
         else: 
             print("No ha seleccionado ninguno de los indicados...")
             

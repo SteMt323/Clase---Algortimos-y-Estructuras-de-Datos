@@ -12,5 +12,5 @@ class Producto():
     
     @codigo.setter
     def codigo(self, nuevo_codigo):
-        print("El código nu puede ser modificado")
+        return ValueError("El código nu puede ser modificado")
         

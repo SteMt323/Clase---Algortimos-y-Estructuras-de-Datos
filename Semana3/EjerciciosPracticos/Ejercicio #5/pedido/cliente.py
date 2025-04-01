@@ -1,5 +1,4 @@
 class Cliente():
-    lista_cliente = []
     def __init__(self, id: int, nombre: str, contacto: str):
         self._id = id
         self.nombre = nombre
@@ -11,39 +10,23 @@ class Cliente():
     
     @id.setter
     def id(self, nuevo_id):
-        print("El id no puede ser modificado")
-        
-    def agregar_cliente(self):
-        return Cliente.lista_cliente.append({"id": self.id, "nombre": self.nombre, "contacto": self.contacto})
-        
-    def calcular_descuento(self, descuento = 0):
-        return descuento
-    
-class ClienteVip(Cliente):
-    def __init__(self, id, nombre, contacto, tipo: bool):
-        super().__init__(id, nombre, contacto) # super() hereda atributos de nuestra clase base
-        self.tipo = tipo
-        
-    def agregar_cliente(self):
-        return Cliente.lista_cliente.append({
-            "id": self.id,
-            "nombre": self.nombre,
-            "contacto": self.contacto,
-            "tipo": self.tipo
-        })
+        return ValueError("El id no puede ser modificado")
         
     def calcular_descuento(self):
-        return super().calcular_descuento(0.15)
+        return 0
+    
+    def __str__(self):
+        return f"ID: {self.id}, Nombre: {self.nombre}, Contacto: {self.contacto}"
         
-    """def descuento(self):
-        if self.tipo == "regular":
-            descuento = 0
-        elif self.tipo == "bronce":
-            descuento = 0.10
-        elif self.tipo == "plata":
-            descuento = 0.15
-        elif self.tipo == "oro":
-            descuento = 0.20
-        else:
-            descuento = 0
-        return descuento"""
+    
+class ClienteVip(Cliente):
+    def __init__(self, id, nombre, contacto):
+        super().__init__(id, nombre, contacto) # super() hereda atributos de nuestra clase base
+        self.tipo = "VIP"
+        
+    def calcular_descuento(self):
+        return 0.15
+
+    def __str__(self):
+        return f"ID: {self.id}, Nombre: {self.nombre}, Contacto: {self.contacto}, Tipo: {self.tipo}"
+

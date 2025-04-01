@@ -1,7 +1,5 @@
 from pedido.pedido import Pedido
-from pedido.cliente import ClienteVip, Cliente
 from datos import detallar_cliente, elegir_productos
-#from pedido.producto import Producto
 
 def menu():
     while True:
@@ -10,9 +8,11 @@ def menu():
         print("2. Salir...")
         opc = input("Seleccione una opción: ")
         if opc == "1":
-            cliente = detallar_cliente()       
+            cliente = detallar_cliente()
             productos = elegir_productos()
+            pedido = Pedido(cliente, productos)
             
+            pedido.generar_pedido()
         elif opc == "2":
             print("Saliendo... ")
             break

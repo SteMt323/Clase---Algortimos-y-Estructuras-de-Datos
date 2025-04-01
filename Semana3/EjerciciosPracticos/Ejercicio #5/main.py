@@ -8,3 +8,11 @@ y aplicar descuentos especiales, demostrando el uso de la herencia y el
 polimorfismo para adaptar el comportamiento de los objetos según el tipo de
 cliente.
 """
+
+from menu import menu
+
+def main():
+    menu()
+    
+if __name__ == "__main__":
+    main()
