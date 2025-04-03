@@ -206,6 +206,11 @@ def Menu_Pincipal():
             
         elif eleccion == 3:
             editar_lista()
+
+
+
+
+            
             
         elif eleccion == 4:
             consultar_Producto()
@@ -227,5 +232,3 @@ def main():
     
 
 
-if __name__ == "__main__" :
-    main()
