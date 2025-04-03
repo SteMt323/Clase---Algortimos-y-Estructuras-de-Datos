@@ -5,7 +5,6 @@ class Inventario():
         self.productos = []
         
     def agregar_producto(self, producto):
-        print(type(producto))
         self.productos.append(producto)
     
     def buscar_producto(self, codigo):
