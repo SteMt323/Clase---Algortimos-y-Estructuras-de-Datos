@@ -8,7 +8,7 @@ permite modelar situaciones reales de gestión de ventas y refuerza el concepto
 de encapsulación y manejo de colecciones en programación orientada a objetos.
 """
 
-import menu
+from .menu import menu
 
 def main():
     menu()
