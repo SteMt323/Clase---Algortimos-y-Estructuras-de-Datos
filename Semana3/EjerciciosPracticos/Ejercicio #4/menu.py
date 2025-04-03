@@ -5,6 +5,7 @@ import os
 def menu():
     inventario = Inventario()
     while True:
+        os.system("cls" if os.name == "nt" else "clear")
         print("___Sistema de gestión de inventario___")
         print("1. Agregar producto ")
         print("2. Buscar producto ")
@@ -22,14 +23,23 @@ def menu():
             os.system("pause")
         elif opc == "2":
             code = int(input("Ingrese el codigo del producto a buscar: "))
-            inventario.buscar_producto(code)
+            producto = inventario.buscar_producto(code)
+            if producto:
+                print(producto)
+            else:
+                print("Producto no encontrado.")
             os.system("pause")
         elif opc == "3":
             code = int(input("Ingrese el codigo del producto a modificar: "))
-            nombre = input("Ingrese el código del producto: ")
-            precio = float(input("Ingrese el precio del producto: "))
-            cantidad = int(input("Ingrese la cantidad en stock del producto: "))
-            inventario.actualizar_producto(code, nombre, precio, cantidad)
+            producto = inventario.buscar_producto(code)
+            if producto:
+                print(f"Producto actual: {producto}")
+                nombre = input("Ingrese el código del producto: ")
+                precio = float(input("Ingrese el precio del producto: "))
+                cantidad = int(input("Ingrese la cantidad en stock del producto: "))
+                inventario.actualizar_producto(code, nombre, precio, cantidad)
+            else:
+                print("Producto no encontrado.")
             os.system("pause")
         elif opc == "4":
             code = int(input("Ingrese el codigo del producto a eliminar: "))
