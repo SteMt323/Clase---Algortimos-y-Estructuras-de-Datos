@@ -5,64 +5,79 @@ enlazada de enteros en orden inverso a partir de una posición p. (6 puntos)
 
 class Node:
     def __init__(self, data):
-        self.next = None
+        self.next = None 
         self.data = data
         
 class LinkedList():
     def __init__(self):
         self.head = None
         
-    def agregar(self, data):
-        new_node: Node = Node(data)
+    def agregar_datos(self, data):
+        new_node = Node(data)
         if not self.head:
             self.head = new_node
-            return
+            return 
         
-        current = self.head
-        while current.next:
-            current = current.next
-        current.next = new_node
+        temp = self.head
+        while temp.next:
+            temp = temp.next
+        temp.next = new_node
         
-    def imprimir(self):
-        current = self.head
-        if not current:
-            print("Lista vacía")
-            return
-        while current:
-            print(current.data, end="->")
-            current = current.next
+    def impresion(self):
+        temp = self.head
+        while temp:
+            print(temp.data, end="->")
+            temp = temp.next
         print("None")
         
-    def reverse_list(self, position):
-        # funcion recursiva
-        def helper(nodo, current_position): 
-            # caso base
-            if not nodo:
-                return
-            # llamada recursiva
-            helper(nodo.next, current_position + 1)
-            if current_position >= position:
-                print(nodo.data, end="->")
+    def invertir_lista(self):
+        if not self.head:
+            print("Lista vacia... ")
+            return
         
-        helper(self.head, 1)
-        print("None")
+        temp = self.head
+        prev = None
+        next_node = None
+        
+        while temp:
+            next_node = temp.next
+            temp.next = prev
+            prev = temp
+            temp = next_node
+        self.head = prev
 
+    def recursion_inverse_list(self):
+        if not self.head:
+            print("Lista vacia...")
+            return
+        temp = self.head
+        
+        def recursion_list(node):
+            if node is None:
+                return
+            recursion_list(node.next)
+            print(node.data, end="->")
+            
+        recursion_list(temp)
+            
+            
+        
 def main():
     lista: LinkedList = LinkedList()
-    for i in range(1, 13):
-        lista.agregar(i)
-        
-    print("Lista original")
-    lista.imprimir()
+    lista.agregar_datos(1)
+    lista.agregar_datos(2)
+    lista.agregar_datos(3)
+    lista.agregar_datos(4)
+    lista.agregar_datos(5)
+    print("Lista original: ")
+    lista.impresion()
     
-    while True:
-        position = int(input("Ingrese desde la posicion a revertir (no mayor a 13)"))
-        if position > 13:
-            print("Posicin no valida... intente nuevamente")
-        else:
-            print(f"Lista inversa desde la posicion {position}")
-            lista.reverse_list(position)
-            break
-            
+    
+    print("\nLista inversa: ")
+    lista.invertir_lista()
+    lista.impresion()
+    print("\nLista inversa (funcion recursiva): ")
+    lista.recursion_inverse_list()
+    
 if __name__ == "__main__":
     main()
