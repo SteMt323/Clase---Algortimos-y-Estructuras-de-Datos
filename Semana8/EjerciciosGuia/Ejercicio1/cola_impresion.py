@@ -27,6 +27,7 @@ class Impresora:
             return
         current = self.head
         self.head = current.next
+        self.head.prev = None
         print(f"Documento {current.data.name} atendido")
 
     def print_documents(self):
