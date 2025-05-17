@@ -30,6 +30,6 @@ class ColaLlamadas:
         current = self.head
         self.head = current.next
         self.head.prev = None
-        print(f"Atendiendo a {current.data.nombre}")
+        print(f"Atendiendo a {current.data.cliente}")
         
         

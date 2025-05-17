@@ -17,9 +17,10 @@ class ColaSolicitudes:
             print("Solicitud agregada a la cola de espera...")
             return 
         current = self.head
-        current.next = self.head
-        self.head.prev = current
-        self.head = current
+        while current.next:
+            current = current.next
+        current.next = new_node
+        new_node.prev = current
         print("Solicitud agregada a la cola de espera...")
         
     def mostrar_usuarios_archivo(self, archivo: str):
@@ -31,7 +32,7 @@ class ColaSolicitudes:
         print(f"Solicitudes de usuarios del archivo: {archivo}")
         while current:
             if current.data.archivo == archivo:
-                print(f"\nEl usuario {current.data.name}: {current.data.archivo}")
+                print(f"\nEl usuario {current.data.usuario}: {current.data.archivo}")
                 access = True
             current = current.next
         if access == False:
@@ -47,7 +48,7 @@ class ColaSolicitudes:
         current = self.head
         self.head = current.next
         self.head.prev = None
-        print(f"La soplicitud del usuario {current}, ya se ha atendido...")
+        print(f"La soplicitud del usuario {current.data.usuario}, ya se ha atendido...")
         return
     
     def imprimir_pendientes(self):
@@ -58,7 +59,7 @@ class ColaSolicitudes:
         counter = 1
         print("Cola de Espera: ")
         while current:
-            print(f"\nSolicitud {counter}:\n- Usuario: {current.data.name}\n- Archivo: {current.data.archivo}")
+            print(f"\nSolicitud {counter}:\n- Usuario: {current.data.usuario}\n- Archivo: {current.data.archivo}")
             current = current.next
                     
                 

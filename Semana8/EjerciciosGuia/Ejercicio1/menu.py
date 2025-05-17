@@ -15,7 +15,7 @@ def menu():
                 user_origin = input("Ingrese el usuario emisor")
                 while True:
                     num_pages = int(input("Ingrese el número de páginas"))
-                    if num_pages is int: break
+                    if num_pages.is_integer(): break
                     else: print("Número inválido...")
                 cola.append(name, user_origin, num_pages)
                 os.system("pause")

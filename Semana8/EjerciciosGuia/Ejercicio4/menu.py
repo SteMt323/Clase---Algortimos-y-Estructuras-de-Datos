@@ -16,7 +16,7 @@ def menu():
                 id = random.randint(1, 9999)
                 while True:
                     duracion = float(input("Ingrese la duracion en milisegundos: "))
-                    if duracion is float: break
+                    if duracion.is_integer: break
                     else: print("Duración inválida, ingrese nuevamente....")
                 cola.agregar_procesos(id, name, duracion)
                 os.system("pause")

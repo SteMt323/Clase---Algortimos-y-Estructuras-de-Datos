@@ -18,17 +18,16 @@ class ColaAtencion:
         current = self.head
         while current.next:
             current = current.next
-        new_node.next = self.head
-        self.head.prev = new_node
-        self.head = new_node
+        current.next = new_node
+        new_node.prev = current
         
     def atender_paciente(self):
         if not self.head:
             print("Sin pacientes por atender...")
             return
         current = self.head
-        self.head.next = current.next
-        self.head.prev = None
+        self.head = current.next
+
         print(f"Se ha atendido al paciente {current.data.nombre}")
         
     def mostrar_pacientes(self):
